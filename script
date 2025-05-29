@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I Love You</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      position: absolute;
+      color: #fff;
+      font-size: 4rem;
+      text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.2);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    .watermark {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      transform: rotate(45deg);
+      animation: floatUp linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>I Love You</h1>
+  <div class="watermark">made by:nykooo ~ <a href="https://shock.lol/$n" style="color:#fff; text-decoration: none;">https://shock.lol/$n</a></div>
+
+  <script>
+    const createHeart = () => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    };
+
+    setInterval(createHeart, 200);
+  </script>
+</body>
+</html>
